@@ -1,0 +1,597 @@
+@import "variables"
+@import "grid"
+@import "mixins"
+@import "sprite.sass"
+@include sprites($spritesheet-sprites)
+@include font-face($title-font, 'BebasNeueRegular.woff2', 400)
+@include font-face($regular-font, 'SFCompactDisplay-UltraLight.ttf', 100)
+@include font-face($regular-font, 'SFCompactDisplay-Light.ttf', 300)
+@include font-face($regular-font, 'SFCompactDisplay-Regular.ttf', 400)
+@include font-face($regular-font, 'SFCompactDisplay-Medium.ttf', 500)
+@include font-face($regular-font, 'SFCompactDisplay-SemiBold.ttf', 600)
+@include font-face($regular-font, 'SFCompactDisplay-Bold.ttf', 700)
+body, html
+  margin: 0
+  padding: 0
+  color: $text-color
+  background-color: $background-color
+a
+  text-decoration: none
+  &:hover, &:focus
+    text-decoration: none
+body
+	font-family: 'SF Compact Display', serif
+	font-weight: 400
+body
+  @include phone-only
+    overflow-x: hidden !important
+.header
+  position: absolute
+  top: 0
+  left: 0
+  right: 0
+  @include phone-only
+    padding: 10px 0
+  padding: 43px 0
+  z-index: 999
+.navigation
+  @include desktop-down
+    background-color: transparentize($brand-color, .1)
+    .__row
+      position: absolute
+      left: 0
+      right: 0
+      background-color: transparentize($brand-color, .1)
+      margin: 0 !important
+      width: 100%
+      padding-bottom: 30px
+      border-bottom: 1px solid transparentize($white, .7)
+      top: -380px
+      -webkit-transition: top .3s ease
+      -moz-transition: top .3s ease
+      -ms-transition: top .3s ease
+      -o-transition: top .3s ease
+      transition: top .3s ease
+      &.open
+        padding-top: 40px
+        top: 40px
+    .info
+      text-align: center
+    .social-container
+      margin-bottom: 20px
+    .social-item
+      text-align: center !important
+    .nav-item
+      display: block
+      width: auto
+      text-align: center
+      margin-bottom: 20px
+    .mail
+      text-align: center
+.nav-container, .social-container
+  list-style: none
+  margin: 0
+  padding: 0
+  -webkit-padding-start: 0
+  -moz-padding-start: 0
+  width: 100%
+.nav-item, .social-item
+  display: table-cell
+  width: 1%
+  text-align: left
+.nav-link
+  color: $white
+  font-family: $regular-font
+  font-weight: 500
+  position: relative
+  &:after
+    position: absolute
+    bottom: -5px
+    left: 0
+    right: 0
+    margin: auto
+    width: 0
+    content: ''
+    color: transparent
+    background: $white
+    height: 1.5px
+    transition: all .5s
+  &:hover, &:focus
+    &:after
+      width: 100%
+.mail
+  color: $white
+  font-size: 14px
+  font-family: $regular-font
+  font-weight: 500
+  margin-bottom: 15px
+i.icon
+  display: inline-block
+.section
+  width: 100%
+.info
+  .social-link
+    &:not(:last-of-type)
+      margin-right: 15px
+h1
+  color: $white
+  font-family: $title-font
+  font-size: 80px
+  @include desktop-up
+    font-size: 100px
+  margin: 0 0 10px
+  font-weight: 400
+  letter-spacing: 2px
+.color-white
+  color: $white
+.work-link
+  color: $white
+  font-size: 16px
+  @include phone-only
+    font-size: 15px
+  opacity: .7
+  -webkit-transition: opacity .3s ease
+  -moz-transition: opacity .3s ease
+  -ms-transition: opacity .3s ease
+  -o-transition: opacity .3s ease
+  transition: opacity .3s ease
+  &:hover, &:focus
+    opacity: 1
+  span
+    margin-right: 15px
+  .icon
+    position: relative
+    top: 5px
+p
+  margin: 0
+  font-size: 16px
+.subtitle
+  color: $white
+  margin: 0
+.toggler
+  display: none
+  -webkit-user-select: none
+  -moz-user-select: none
+  -ms-user-select: none
+  user-select: none
+  cursor: pointer
+  height: 2.6rem
+  width: 2.6rem
+  z-index: 2
+  margin-top: 0
+  position: relative
+  &.expanded
+    .toggler-bar
+      background: transparent
+      &:before, &:after
+        background: $white
+        margin-top: 0
+      &:after
+        -webkit-transform: rotate(45deg)
+        -moz-transform: rotate(45deg)
+        -ms-transform: rotate(45deg)
+        -o-transform: rotate(45deg)
+        transform: rotate(45deg)
+      &:before
+        -webkit-transform: rotate(-45deg)
+        -moz-transform: rotate(-45deg)
+        -ms-transform: rotate(-45deg)
+        -o-transform: rotate(-45deg)
+        transform: rotate(-45deg)
+  &-bar
+    -webkit-transform: translateY(-50%)
+    -ms-transform: translateY(-50%)
+    transform: translateY(-50%)
+    -webkit-transition: all 0.5s ease
+    -moz-transition: all 0.5s ease
+    -ms-transition: all 0.5s ease
+    -o-transition: all 0.5s ease
+    transition: all 0.5s ease
+    background: white
+    content: ''
+    height: 0.2rem
+    width: 100%
+    position: absolute
+    top: 50%
+    &:after, &:before
+      -webkit-transform: translateY(-50%)
+      -ms-transform: translateY(-50%)
+      transform: translateY(-50%)
+      -webkit-transition: all 0.5s ease
+      -moz-transition: all 0.5s ease
+      -ms-transition: all 0.5s ease
+      -o-transition: all 0.5s ease
+      transition: all 0.5s ease
+      background: white
+      content: ''
+      height: 0.2rem
+      width: 100%
+      position: absolute
+      top: 50%
+    &:after
+      margin-top: .8rem
+    &:before
+      margin-top: -.8rem
+@include desktop-down
+  .toggler
+    display: block
+#welcome
+  @include desktop-down
+    padding: 70px 0 50px
+  background: $brand-color
+  background-blend-mode: multiply
+  position: relative
+  .container
+    height: 100%
+  .__row
+    height: 100%
+  .text
+    line-height: 140%
+    margin-bottom: 40px
+  .subtitle
+    margin-bottom: 40px
+  @include desktop-up
+    height: 100vh
+    .subtitle
+      margin-bottom: 100px
+    .text
+      max-width: 42%
+      margin-bottom: 90px
+    background: linear-gradient(90deg, #006694 -25.44%, rgba(0, 102, 148, 0) 99.93%), url('../assets/welcome-bg.jpg') no-repeat top right fixed
+    -webkit-background-size: cover
+    background-size: cover
+    background-blend-mode: multiply
+.benefit-item
+  @include phone-only
+    width: 100%
+  &-title
+    display: flex
+    align-items: center
+    color: $red
+    @include tablet-portrait-up
+      margin-bottom: 20px
+    .bold
+      font-size: 32px
+      font-weight: 600
+      margin-right: 20px
+      @include phone-only
+        margin-right: 10px
+      @include desktop-up
+        font-size: 55px
+    .thin
+      font-size: 24px
+      font-weight: 300
+      @include desktop-up
+        font-size: 30px
+  &-text
+    @include phone-only
+      width: 100%
+    @include desktop-up
+      max-width: 80%
+#benefits
+  padding: 40px 0
+  @include phone-only
+    .__col-12
+      &:not(:last-of-type)
+        margin-bottom: 15px
+  @include desktop-up
+    padding: 120px 0
+.section
+  .title
+    margin-bottom: 30px
+    @include desktop-up
+      margin-bottom: 90px
+    .sub-level
+      font-size: 18px
+      @include tablet-landscape-up
+        font-size: 20px
+    .main-level
+      margin: 0
+      line-height: 1
+      text-transform: uppercase
+      font-weight: 100
+      font-size: 50px
+      color: $brand-color
+      position: relative
+      display: inline-block
+      @include phone-only
+        &:after
+          display: none !important
+      @include desktop-up
+        letter-spacing: .1em
+        margin: 0 0 0 -8px
+      &:after
+        display: block
+        content: ''
+        position: absolute
+        top: 18px
+        bottom: 15px
+        right: -11px
+        width: 1px
+        background-color: $brand-color
+      @include desktop-up
+        font-size: 100px
+  .service-item
+    width: 100%
+    &-title
+      font-size: 20px
+      font-weight: 500
+      margin-bottom: 20px
+      color: $red
+      @include tablet-landscape-up
+        margin-bottom: 35px
+    &-text
+      line-height: 140%
+      b
+        font-weight: 500
+      @include desktop-up
+        max-width: 65%
+.service-subtitle
+  font-size: 25px
+  @include phone-only
+    font-size: 18px
+  text-transform: uppercase
+  font-weight: 600
+  margin-bottom: 20px !important
+  @include tablet-portrait-up
+    margin-bottom: 40px !important
+  @include desktop-up
+    margin-bottom: 90px !important
+  h3
+    margin: 0
+.pack-1
+  margin-bottom: 30px !important
+  @include desktop-up
+    margin-bottom: 140px !important
+.service-social-title
+  font-size: 20px
+  font-weight: 100
+  text-transform: uppercase
+  color: transparentize($text-color, .8)
+  @include phone-only
+    font-weight: 300
+    color: transparentize($text-color, .5)
+  &.active
+    color: $brand-color
+  @include tablet-portrait-up
+    font-size: 50px
+  @include desktop-up
+    font-size: 80px
+  @include tablet-portrait-up
+    display: flex
+    align-items: center
+.service-social-text
+  &.soon
+    @include tablet-portrait-up
+      font-size: 25px
+      text-transform: uppercase
+      padding-bottom: 17px
+    color: transparentize($text-color, .8)
+    @include phone-only
+      color: transparentize($text-color, .5)
+  @include tablet-portrait-up
+    display: flex
+    align-items: center
+  @include desktop-up
+    max-width: 85%
+.pack-2
+  .__col-12
+    margin-bottom: 15px !important
+    &:last-of-type
+      margin-bottom: 0 !important
+    @include tablet-portrait-up
+      margin-bottom: 50px !important
+      &:nth-last-of-type(2)
+        margin-bottom: 0 !important
+    @include desktop-up
+      margin-bottom: 70px !important
+#service
+  @include phone-only
+    padding: 0 0 40px
+  @include tablet-portrait-up
+    padding: 0 0 60px
+  @include desktop-up
+    padding: 20px 0 142px
+  .__col-12
+    @include phone-only
+      &:not(:last-of-type)
+        margin-bottom: 30px
+    @include tablet-portrait-up
+      margin-bottom: 50px
+      &:last-of-type, &:nth-last-of-type(2)
+        margin-bottom: 0 !important
+    @include desktop-up
+      margin-bottom: 100px
+      &:last-of-type, &:nth-last-of-type(2)
+        margin-bottom: 0 !important
+.layout
+  position: absolute
+  top: 0
+  right: 0
+  bottom: 0
+  left: 0
+  background: linear-gradient(0deg, rgba(35, 35, 35, 0.7), rgba(35, 35, 35, 0.7)), linear-gradient(180deg, rgba(237, 87, 66, 0.14) 0%, rgba(20, 124, 202, 0.3) 99.91%)
+  .container
+    height: 100%
+    align-items: center
+    display: flex
+#principles
+  position: relative
+  width: 100%
+  max-height: 800px
+  overflow: hidden
+  @include phone-only
+    max-height: 450px
+  #video
+    width: 100%
+    @include phone-only
+      width: auto
+  .sub-level
+    color: $white
+  .main-level
+    text-align: left
+  .icon
+    margin-right: 40px
+  .text
+    color: $white
+    font-weight: 400
+    font-size: 16px
+  .__col-12
+    &:not(:last-of-type)
+      margin-bottom: 30px
+    @include tablet-portrait-up
+      margin-bottom: 70px !important
+      &:last-of-type, &:nth-last-of-type(2)
+        margin-bottom: 0 !important
+#portfolio
+  padding: 50px 0
+  @include desktop-up
+    padding: 140px 0
+  .content
+    @include desktop-up
+      .__col-12
+        height: calc(380px + 120px)
+        &:first-of-type
+          align-content: flex-start
+        &:nth-of-type(2)
+          align-content: center
+        &:nth-of-type(3)
+          align-content: flex-end
+.portfolio-item
+  display: flex
+  perspective: 30px
+  @include desktop-down
+    flex-direction: column
+    justify-content: center
+  &-image
+    -webkit-transition: transform 0.5s
+    -moz-transition: transform 0.5s
+    -ms-transition: transform 0.5s
+    -o-transition: transform 0.5s
+    transition: transform 0.5s
+  &-content
+    padding: 20px
+    @include desktop-down
+      padding-left: 0
+      padding-right: 0
+    @include desktop-up
+      padding-top: 50px
+    &-title
+      font-size: 18px
+      @include desktop-up
+        font-size: 20px
+      font-weight: 500
+      margin-bottom: 10px
+    &-subtitle
+      font-weight: 300
+      color: $red
+      margin-bottom: 20px
+      @include desktop-up
+        margin-bottom: 52px
+    &-description
+      font-weight: 500
+#partners
+  padding-bottom: 30px
+  @include desktop-down
+    .content
+      .__col-12.j-:last-of-type
+        justify-content: center !important
+  @include desktop-up
+    padding-bottom: 100px
+#contacts
+  padding: 50px 0 70px
+  background: linear-gradient(0deg, rgba(35, 35, 35, 0.6), rgba(35, 35, 35, 0.6)), linear-gradient(180deg, rgba(237, 87, 66, 0.02) 0%, rgba(20, 124, 202, 0.21) 99.91%), url(../assets/contact-bg.jpg) fixed
+  -webkit-background-size: cover
+  background-size: cover
+  background-blend-mode: multiply
+  .sub-level
+    color: $white
+  .text
+    color: $white
+    line-height: 140%
+    @include desktop-up
+      max-width: 72%
+  @include desktop-up
+    padding: 130px 0
+  .content
+    margin-bottom: 20px
+    @include tablet-portrait-up
+      margin-bottom: 50px
+    @include desktop-up
+      margin-bottom: 80px
+.input
+  outline: none
+  height: 40px
+  border-top: none
+  border-left: none
+  border-right: none
+  border-bottom: 1px solid transparentize($white, .7)
+  background-color: transparent
+  width: 100%
+  color: $white
+  -webkit-transition: .2s ease-in
+  -moz-transition: .2s ease-in
+  -ms-transition: .2s ease-in
+  -o-transition: .2s ease-in
+  transition: .2s ease-in
+  &:focus
+    outline: none
+    border-bottom-color: $white
+.form
+  width: 100%
+  padding: 5px
+  @include tablet-portrait-up
+    .input
+      width: calc(100% - 20px)
+.btn
+  padding: 15px 0
+  border: none
+  box-shadow: none
+  background-color: $red
+  color: $white
+  width: 100%
+  text-align: center
+  font-size: 18px
+  cursor: pointer
+  -webkit-transition: .3s ease-in
+  -moz-transition: .3s ease-in
+  -ms-transition: .3s ease-in
+  -o-transition: .3s ease-in
+  transition: .3s ease-in
+  &:focus, &:hover
+    outline: none
+    background-color: transparentize($red, .1)
+  @include tablet-landscape-up
+    padding: 24px 0
+.mb-44
+  margin-bottom: 20px
+  @include tablet-portrait-up
+    margin-bottom: 44px
+.footer
+  width: 100%
+  max-width: 100%
+  padding: 40px 0
+  margin-top: -111px
+  @include desktop-down
+    padding: 10px 0
+    margin-top: -51px
+  a:not(:last-of-type)
+    margin-right: 20px
+.tingle-modal-box__footer
+  display: none
+.mb-20
+  margin-bottom: 10px
+  @include desktop-up
+    margin-bottom: 20px
+.modal-form
+  .text
+    font-size: 18px
+    text-align: center
+    font-weight: 500
+  .input
+    border-bottom-color: $brand-color
+    color: $text-color
+.tingle-modal-box
+  max-width: 500px
+.tingle-modal-box__content
+  padding: 2.5rem

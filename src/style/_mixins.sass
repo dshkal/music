@@ -1,0 +1,23 @@
+@mixin font-face ($name, $file, $weight: normal)
+  @font-face
+    font-family: "#{$name}"
+    src: url('../fonts/#{$file}')
+    font-weight: $weight
+@mixin phone-only
+  @media (max-width: 767px)
+    @content
+@mixin tablet-portrait-up
+  @media (min-width: 768px)
+    @content
+@mixin tablet-landscape-up
+  @media (min-width: 900px)
+    @content
+@mixin desktop-up
+  @media (min-width: 1200px)
+    @content
+@mixin desktop-down
+  @media (max-width: 1199px)
+    @content
+@mixin big-desktop-up
+  @media (min-width: 1800px)
+    @content
