@@ -1,2 +1,2 @@
 ### Music
-***simple landing form music promotion***
+***simple landing for music promotion***
